@@ -5,4 +5,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    data = {"content": "Gfg is the best"}
+    return render(request, "info/index.html", data)
