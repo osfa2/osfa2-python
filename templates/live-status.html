@@ -1,65 +1,16 @@
+{% load filters %}
+
 <div class='row border border-3 border-danger mt-3 ms-1 me-1 mb-3 rounded shadow p-2'>
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>      
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>   
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>   
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>   
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>   
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>   
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>   
-      <ul class="list-group col">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>                                             
+{% for group in groups %}
+      {% if employees|is_used_group:group.id %}
+            <ul class="list-group col live-status">
+                  <li class="list-group-item text-center">{{ group.name }}</li>
+                  {% with groupid=group.id|stringformat:"i" %}
+                        {% for emps in employees|filter_by_group:groupid %}
+                              <li class="list-group-item">{{ emps }}</li>
+                        {% endfor %}
+                  {% endwith %}
+            </ul>
+      {% endif %}
+{% endfor %}                                             
 </div>

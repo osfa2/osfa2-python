@@ -8,6 +8,7 @@ class Position(Model):
 class Department(Model):
       title = models.CharField(max_length=128, null=False)
       code = models.CharField(max_length=3, null=False)
+      livestatus = models.BooleanField(default=1, null=False)
       
       
 class Group(Model):
@@ -27,7 +28,7 @@ class Employee(Model):
       birthdate = models.CharField(max_length=10, null=True)
       lunch = models.TimeField(null=True)
       initials = models.CharField(max_length=3, null=True)
-      department = models.ForeignKey(Department, on_delete=models.RESTRICT, null=True, related_name='employee_department')
+      department = models.ForeignKey('Department', on_delete=models.RESTRICT, null=True, related_name='employee_department')
       supervisor = models.ForeignKey('Employee', on_delete=models.RESTRICT, null=True, related_name='employee_supervisor')
       position = models.ForeignKey('Position', on_delete=models.RESTRICT, null=True, related_name='employee_position')
       payroll = models.CharField(max_length=16, null=True)
@@ -41,8 +42,26 @@ class Employee(Model):
       modifiedby = models.ForeignKey('Employee', on_delete=models.RESTRICT, null=True, related_name='employee_modifiedby')
       terminal = models.BooleanField()
       
+      LIVE_STATUS = [
+            (1, 'Offline'),
+            (2, 'Working from Home'),
+            (3, 'At Desk'),
+            (4, 'Available'),
+            (5, 'Away From Desk'),
+            (6, 'Lobby'),
+            (7, 'In Meeting')
+      ]
+      
+      livestatus = models.IntegerField(
+            choices=LIVE_STATUS,
+            blank=True,
+            default=1         
+      )
+      livestatusdate = models.DateTimeField(blank=True, null=True)
+      livestatusby = models.ForeignKey('Employee', on_delete=models.RESTRICT, null=True, related_name='employee_livestatusby')
+      
       class Meta:
             ordering = ['lastname', 'firstname']
             
       def __str__(self):
-            return f'{self.lastname}, {self.firstname}'      
+            return f'{self.nickname} {self.lastname}'      

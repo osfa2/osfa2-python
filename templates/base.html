@@ -19,10 +19,12 @@
     <link rel="stylesheet" href="{% static 'info/css/styles.css' %}" />
 </head>
 <body>
-        
+        {% load filters %}
         <div class="container">
                 {% include 'menu.html' %}
+
                 {% include 'live-status.html' %}
+
                 {% block content %} {% endblock content %}
         </div>
 </body>
