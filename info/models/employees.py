@@ -59,6 +59,7 @@ class Employee(Model):
       )
       livestatusdate = models.DateTimeField(blank=True, null=True)
       livestatusby = models.ForeignKey('Employee', on_delete=models.RESTRICT, null=True, related_name='employee_livestatusby')
+      programmer = models.BooleanField(default=0)
       
       class Meta:
             ordering = ['lastname', 'firstname']
