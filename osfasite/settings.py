@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'info',
+    'app_requests',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap5'
+    'bootstrap5',
+    'django_bootstrap_icons'
 ]
 
 MIDDLEWARE = [
@@ -117,7 +119,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [ ('info', os.path.join(BASE_DIR, 'info/static/')), ]
+STATICFILES_DIRS = [ 
+    ('info', os.path.join(BASE_DIR, 'info/static/')), 
+    ('app_requests', os.path.join(BASE_DIR, 'app_requests/static/')), 
+]
 STATIC_ROOT = 'static/'
 
 # Default primary key field type

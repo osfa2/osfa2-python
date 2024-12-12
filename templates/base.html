@@ -1,31 +1,30 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-<head>
-    {% block title %}
-        <title>Local Library</title>
-    {% endblock %}
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="{% static 'info/images/favicon.ico' %}">
+    <head>
+        {% block title %}
+            <title>Local Library</title>
+        {% endblock %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="{% static 'info/images/favicon.ico' %}">
 
-    {% load bootstrap5 %}
-    
-    {% bootstrap_css %}
-    
-    {% bootstrap_javascript %}
-    
-    <!-- Add additional CSS in static file -->
-    <link rel="stylesheet" href="{% static 'info/css/styles.css' %}" />
-</head>
-<body>
-        {% load filters %}
+        {% load bootstrap5 %}
+        
+        {% bootstrap_css %}
+        
+        {% bootstrap_javascript %}
+        
+        <!-- Add additional CSS in static file -->
+        <link rel="stylesheet" href="{% static 'info/css/styles.css' %}" />
+    </head>
+    <body>
         <div class="container">
-                {% include 'menu.html' %}
+            {% include 'menu.html' %}
 
-                {% include 'live-status.html' %}
+            {% include 'live-status.html' %}              
 
-                {% block content %} {% endblock content %}
+            {% block content %} {% endblock content %}
         </div>
-</body>
+    </body>
 </html>

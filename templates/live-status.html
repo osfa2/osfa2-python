@@ -1,16 +1,71 @@
 {% load filters %}
+{% load bootstrap_icons %}
 
 <div class='row border border-3 border-danger mt-3 ms-1 me-1 mb-3 rounded shadow p-2'>
+
 {% for group in groups %}
       {% if employees|is_used_group:group.id %}
             <ul class="list-group col live-status">
-                  <li class="list-group-item text-center">{{ group.name }}</li>
+                  <li class="list-group-item text-center p-0 m-0">                        
+                        <a class="btn btn-dark pt-2 pb-2 m-0 d-grid" data-bs-toggle="collapse" href="#collapseExample_{{forloop.counter}}" role="button" aria-expanded="true" aria-controls="collapseExample_{{forloop.counter}}">
+                              {{ group.name }}
+                        </a>
+                  </li>
+                  <div class="collapse show" id="collapseExample_{{forloop.counter}}">
                   {% with groupid=group.id|stringformat:"i" %}
-                        {% for emps in employees|filter_by_group:groupid %}
-                              <li class="list-group-item">{{ emps }}</li>
+                        {% for emp in employees|filter_by_group:groupid %}
+                              <li class="list-group-item p-2 container">
+                                    <div class="row">
+                                          <div class='col-4 p-0 text-center align-middle pt-2'>
+                                                {% if emp.livestatus == 1 %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+                                                            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+                                                      </svg>
+                                                {% elif emp.livestatus == 2 %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                                            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+                                                      </svg>
+                                                {% elif emp.livestatus == 3 %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
+                                                            <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25"/>
+                                                      </svg>
+                                                {% elif emp.livestatus == 4 %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="blue" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                                                            <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                                                      </svg>
+                                                {% elif emp.livestatus == 5 %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="orange" class="bi bi-building-fill-slash" viewBox="0 0 16 16">
+                                                            <path d="M13.879 10.414a2.501 2.501 0 0 0-3.465 3.465zm.707.707-3.465 3.465a2.501 2.501 0 0 0 3.465-3.465m-4.56-1.096a3.5 3.5 0 1 1 4.949 4.95 3.5 3.5 0 0 1-4.95-4.95Z"/>
+                                                            <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7.256A4.5 4.5 0 0 0 12.5 8a4.5 4.5 0 0 0-3.59 1.787A.5.5 0 0 0 9 9.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .39-.187A4.5 4.5 0 0 0 8.027 12H6.5a.5.5 0 0 0-.5.5V16H3a1 1 0 0 1-1-1zm2 1.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m3 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+                                                      </svg>
+                                                {% elif emp.livestatus == 6 %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="purple" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                                                      </svg>
+                                                {% elif emp.livestatus == 7 %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                                                      </svg>
+                                                {% endif %}                                                                                                      
+                                          </div> 
+                                          <div class='col-8 p-0' style='display:ruby'>
+                                                <div class='col-12 text-center fw-bold'>
+                                                      {{ emp.nickname }} {{ emp.lastname|last_initial }}
+                                                </div>
+                                                <div class='col-12 text-center fst-italic'>
+                                                      {{ emp.officephone|format_phone }}
+                                                </div>
+                                          </div>                                     
+                                    </div>
+                              </li>
                         {% endfor %}
                   {% endwith %}
+                  </div>
             </ul>
       {% endif %}
-{% endfor %}                                             
-</div>
+{% endfor %}
+      <div class="row border border-3 border-danger m-1 rounded shadow align-end">
+            Click
+      </div>                                          
+</div>  
