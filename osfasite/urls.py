@@ -30,5 +30,6 @@ urlpatterns = [
     path("formemail/", include("app_formemail.urls")),
     path("reception/", include("app_reception.urls")),  
     path("inventory/", include("app_inventory.urls")),  
+    path("employee/", include("app_employee.urls")), 
     path("admin/", admin.site.urls),
 ]

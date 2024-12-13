@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'app_hopetransient',
     'app_reception',
     'app_inventory',
+    'app_employee',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,6 +143,7 @@ STATICFILES_DIRS = [
     ('app_hopetransient', os.path.join(BASE_DIR, 'app_hopetransient/static/')), 
     ('app_reception', os.path.join(BASE_DIR, 'app_reception/static/')), 
     ('app_inventory', os.path.join(BASE_DIR, 'app_inventory/static/')), 
+    ('app_employee', os.path.join(BASE_DIR, 'app_employee/static/')),
 ]
 STATIC_ROOT = 'static/'
 
