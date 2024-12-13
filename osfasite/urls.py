@@ -27,6 +27,7 @@ urlpatterns = [
     path("workorder/", include("app_workorder.urls")),
     path("formfinder/", include("app_formfinder.urls")),
     path("hopetransient/", include("app_hopetransient.urls")),  
-    path("formemail/", include("app_formemail.urls")),  
+    path("formemail/", include("app_formemail.urls")),
+    path("reception/", include("app_reception.urls")),  
     path("admin/", admin.site.urls),
 ]
