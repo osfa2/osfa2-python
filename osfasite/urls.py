@@ -24,5 +24,6 @@ urlpatterns = [
     path("ede/", include("app_ede.urls")),
     path("leave/", include("app_leave.urls")),
     path("mustread/", include("app_mustread.urls")),
+    path("workorder/", include("app_workorder.urls")),    
     path("admin/", admin.site.urls),
 ]

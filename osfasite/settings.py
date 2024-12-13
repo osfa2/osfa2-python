@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'app_requests',
     'app_ede',
     'app_leave',
+    'app_workorder',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
