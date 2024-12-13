@@ -10,10 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-#   superuser:  osfainfo
-#   password:   GoDawgs!
-#   email:      osfa2@uga.edu
-
 import os
 from pathlib import Path
 
