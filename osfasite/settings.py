@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'app_leave',
     'app_workorder',
     'app_formfinder',
+    'app_hopetransient',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,6 +132,7 @@ STATICFILES_DIRS = [
     ('app_formfinder', os.path.join(BASE_DIR, 'app_formfinder/static/')), 
     ('app_mustread', os.path.join(BASE_DIR, 'app_mustread/static/')), 
     ('app_workorder', os.path.join(BASE_DIR, 'app_workorder/static/')), 
+    ('app_hopetransient', os.path.join(BASE_DIR, 'app_hopetransient/static/')), 
 ]
 STATIC_ROOT = 'static/'
 
