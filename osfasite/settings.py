@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'info',
     'app_requests',
     'app_ede',
+    'app_leave',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,6 +125,7 @@ STATICFILES_DIRS = [
     ('info', os.path.join(BASE_DIR, 'info/static/')), 
     ('app_requests', os.path.join(BASE_DIR, 'app_requests/static/')), 
     ('app_ede', os.path.join(BASE_DIR, 'app_ede/static/')), 
+    ('app_leave', os.path.join(BASE_DIR, 'app_leave/static/')), 
 ]
 STATIC_ROOT = 'static/'
 

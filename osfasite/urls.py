@@ -22,5 +22,6 @@ urlpatterns = [
     path("info/", include("info.urls")),
     path("requests/", include("app_requests.urls")),
     path("ede/", include("app_ede.urls")),
+    path("leave/", include("app_leave.urls")),
     path("admin/", admin.site.urls),
 ]
