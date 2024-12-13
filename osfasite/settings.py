@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'app_ede',
     'app_leave',
     'app_workorder',
+    'app_formfinder',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,6 +128,9 @@ STATICFILES_DIRS = [
     ('app_requests', os.path.join(BASE_DIR, 'app_requests/static/')), 
     ('app_ede', os.path.join(BASE_DIR, 'app_ede/static/')), 
     ('app_leave', os.path.join(BASE_DIR, 'app_leave/static/')), 
+    ('app_formfinder', os.path.join(BASE_DIR, 'app_formfinder/static/')), 
+    ('app_mustread', os.path.join(BASE_DIR, 'app_mustread/static/')), 
+    ('app_workorder', os.path.join(BASE_DIR, 'app_workorder/static/')), 
 ]
 STATIC_ROOT = 'static/'
 
