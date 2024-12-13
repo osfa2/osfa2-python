@@ -29,5 +29,6 @@ urlpatterns = [
     path("hopetransient/", include("app_hopetransient.urls")),  
     path("formemail/", include("app_formemail.urls")),
     path("reception/", include("app_reception.urls")),  
+    path("inventory/", include("app_inventory.urls")),  
     path("admin/", admin.site.urls),
 ]

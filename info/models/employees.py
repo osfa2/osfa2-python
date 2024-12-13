@@ -3,16 +3,32 @@ from django.db.models import Model
 
 class Position(Model):
       name = models.CharField(max_length=256, null=False)
+      class Meta:
+            ordering = ['name']
+      
+      def __str__(self):
+            return f'{self.name}'         
       
       
 class Department(Model):
       title = models.CharField(max_length=128, null=False)
       code = models.CharField(max_length=3, null=False)
       livestatus = models.BooleanField(default=1, null=False)
+
+      class Meta:
+            ordering = ['title']
+      
+      def __str__(self):
+            return f'{self.title}'        
       
       
 class Group(Model):
       name = models.CharField(max_length=32, null=False)
+      class Meta:
+            ordering = ['name']
+      
+      def __str__(self):
+            return f'{self.name}'         
       
 
 # Create your models here.

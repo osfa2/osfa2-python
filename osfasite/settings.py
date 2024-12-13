@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+
+#   superuser:  osfainfo
+#   password:   GoDawgs!
+#   email:      osfa2@uga.edu
+
 import os
 from pathlib import Path
 
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'app_formfinder',
     'app_hopetransient',
     'app_reception',
+    'app_inventory',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,6 +141,7 @@ STATICFILES_DIRS = [
     ('app_workorder', os.path.join(BASE_DIR, 'app_workorder/static/')), 
     ('app_hopetransient', os.path.join(BASE_DIR, 'app_hopetransient/static/')), 
     ('app_reception', os.path.join(BASE_DIR, 'app_reception/static/')), 
+    ('app_inventory', os.path.join(BASE_DIR, 'app_inventory/static/')), 
 ]
 STATIC_ROOT = 'static/'
 
