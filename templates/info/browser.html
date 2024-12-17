@@ -46,7 +46,7 @@
                               <th class="col text-center">Type</th>
                               <th class="col text-end">Size</th>
                         </tr>
-                        {% if back|length > 0 %}
+                        {% if bc|length > 0 %}
                               {% comment %}
                               BACK LINK - ROW IS A BUTTON SUBMITTING FORM
                               {% endcomment %}
@@ -169,7 +169,7 @@
                                     <td class="col">
                                           {% with view_base_path|add:fo.name as file_path %}
                                                 {% if fo.type == "FILE" %}
-                                                      <a href="{% static file_path %}">{{ fo.name }}</a>
+                                                      <a href="{% static file_path %}" target="_blank">{{ fo.name }}</a>
                                                 {% else %}
                                                       {{ fo.name }}
                                                 {% endif %}

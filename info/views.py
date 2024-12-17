@@ -1,6 +1,6 @@
 import os
 from django.shortcuts import render
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponse
 from datetime import datetime
 from urllib.parse import urlparse, parse_qs
 
@@ -22,16 +22,19 @@ def browser(request):
     list_of_objects = list()
     full_path = ""
     view_root_path = "docs/"
-    view_base_path = ""
+    view_base_path = "docs/"
     breadcrumbs = []
 
     if(request.method == "POST"):
         NUM_OF_PARTS_URL = 5
         click_type = request.POST['click_type']
         full_path = request.POST['full_path']
-
+    
         parts_full_path = full_path.split('/')
+        file_name = parts_full_path[-1:][0]
+    
         parts_full_path_len = len(parts_full_path)
+    
         #   we need a negative number to get the last items
         bc_indexes = parts_full_path_len - NUM_OF_PARTS_URL
         if bc_indexes > 0:
@@ -41,6 +44,11 @@ def browser(request):
             
         if click_type == 'DIR':
             list_of_objects = file_browser.get_browser(full_path)
+        else:
+            with open(full_path,'rb') as doc:
+                response = HttpResponse(doc.read(), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+                response['Content-Disposition'] = 'inline;filename=' + file_name
+                return response
     else:
         # 'C:/inetpub/wwwosfa/static/docs/awarding_manual'
         breadcrumbs = request.session['breadcrumbs']
