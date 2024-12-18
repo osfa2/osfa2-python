@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Employee, Department, Group, Position, AppRequests
+from .models import Employee, Department, Group, Position, AppRequests, Link
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
@@ -21,4 +21,9 @@ class PositionAdmin(admin.ModelAdmin):
 
 @admin.register(AppRequests)
 class AppRequestsAdmin(admin.ModelAdmin):
+      pass
+
+@admin.register(Link) 
+class LinkAdmin(admin.ModelAdmin):
+      list_display = ['displaytext', 'url', 'linktype', 'description']
       pass

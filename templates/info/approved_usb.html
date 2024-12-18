@@ -1,0 +1,20 @@
+{% extends '../base.html' %}
+
+{% block content %}
+      <div class="row d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none pb-3">
+            <div class="fs-4">Approved USB Users</div>
+      </div>
+      <div class="container shadow rounded">
+            <div class="row pt-2">
+                  <p><font class="text-danger fw-bold">If you are not on the list, you are not allowed to connect USB devices to OSFA computers!</font></p>
+                  <p class="text-primary">Below is the list of all approved USB users. If you have a USB device and need to use it, contact one of the users on the list.</p>
+            </div>
+            <ul class="list-group col pt-1 pb-3">
+                  {% for emp in employees %}
+                        <li class="list-group-item list-group-item-action">
+                              <a href="#">{{ emp.nickname }}</a>
+                        </li>
+                  {% endfor %}
+            </ul>
+      </div>
+{% endblock %}

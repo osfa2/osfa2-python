@@ -1,63 +1,41 @@
 {% load static %}
 <nav class="navbar navbar-dark bg-dark">
       <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/info">
                   <img src="{% static 'info/images/uga.png' %}" alt="" width="159" height="75">
             </a>
-            <div class="dropdown">
+            <div class="menu-dropdown bg-dark text-light">
                   <button class="dropbtn">OSFA Info
                         <i class="fa fa-caret-down"></i>
                   </button>
-                  <div class="dropdown-content">
-                        <a href="#">Approved Software</a>
-                        <a href="#">Approved USB Users</a>
-                        <a href="#">Calendar</a>
-                        <a href="#">Client Services On-Call</a>
-                        <a href="#">Contact Directory</a>
-                        <a href="#">Flex Time</a>
-                        <a href="#">Peak Processing and Service Dates</a>
+                  <div class="menu-dropdown-content">
+                        <a href="/info/approvedsoftware">Approved Software</a>
+                        <a href="/info/approvedusb">Approved USB Users</a>
+
                         <a href="#">Routing Slip</a>
-                        <a href="#">Training Videos</a>
                   </div>
             </div>            
-            <div class="dropdown">
-                  <button class="dropbtn">Documents 
-                        <i class="fa fa-caret-down"></i>
+            <div class="menu-dropdown">
+                  <button class="dropbtn">
+                        <a href="/info/browser">Documents</a>
                   </button>
-                  <div class="dropdown-content">
-                        <a href="{% static 'docs/awarding_manual/2025-26 Awarding Manual\2025-2026 Enrollment and Loan Disbursement Dates.docx' %}" target="_blank">Awarding Manual</a>
-                        <a href="#" target="_blank">Federal Work Study</a>
-                        <a href="#" target="_blank">Floor Plans</a>
-                        <a href="#" target="_blank">General</a>
-                        <a href="#" target="_blank">Leave Time Conversion Chart</a>
-                        <a href="#" target="_blank">Loan Net and Gross Disbursements</a>
-                        <a href="#" target="_blank">Loans</a>
-                        <a href="{% static 'docs/orgchart.pdf' %}" target="_blank">Org Chart</a>
-                        <a href="#" target="_blank">OSFA Quick Sheets</a>
-                        <a href="#" target="_blank">Procedures</a>
-                        <a href="#" target="_blank">Scholarships</a>
-                        <a href="#" target="_blank">System Processing Docs</a>
-                        <a href="#" target="_blank">Technoworld</a>
-                        <a href="#" target="_blank">Travel Forms</a>
-                        <a href="#" target="_blank">WIA</a>
-                  </div>
             </div>
-            <div class="dropdown">
+            <div class="menu-dropdown">
                   <button class="dropbtn">External Sites
                         <i class="fa fa-caret-down"></i>
                   </button>
-                  <div class="dropdown-content">
+                  <div class="menu-dropdown-content">
                         <a href="#">Apps Reports</a>
                         <a href="#">Encrypt Files</a>                        
                         <a href="#">OneUSG Connect</a>
                         <a href="#">Staff Handbook</a>
                   </div>
             </div> 
-            <div class="dropdown">
+            <div class="menu-dropdown">
                   <button class="dropbtn">Forms & Apps 
                         <i class="fa fa-caret-down"></i>
                   </button>
-                  <div class="dropdown-content">
+                  <div class="menu-dropdown-content">
                         <a href="#">EDE</a>
                         <a href="#">Employees</a>
                         <a href="#">Form Finder</a>
@@ -71,11 +49,11 @@
                         <a href="#">Work Order</a>
                   </div>
             </div> 
-            <div class="dropdown">
+            <div class="menu-dropdown">
                   <button class="dropbtn">Admin Mgmt 
                         <i class="fa fa-caret-down"></i>
                   </button>
-                  <div class="dropdown-content">
+                  <div class="menu-dropdown-content">
                         <a href="#">Configurations</a>
                         <a href="#">Permissions</a>                        
                         <a href="#">Security</a>
@@ -84,11 +62,11 @@
                         <a href="#">Users [Employee]</a>                        
                   </div>
             </div> 
-            <div class="dropdown">
+            <div class="menu-dropdown">
                   <button class="dropbtn">Employee Mgmt. 
                         <i class="fa fa-caret-down"></i>
                   </button>
-                  <div class="dropdown-content">
+                  <div class="menu-dropdown-content">
                         <a href="#">Directory</a>
                         <a href="#">Job Positions</a>
                         <a href="#">Profiles</a>
@@ -96,21 +74,25 @@
                         <a href="#">Work Schedule</a>
                   </div>
             </div>            
-            <div class="dropdown">
-                  <button class="dropbtn">Leave Mgmt. 
+            <div class="menu-dropdown">
+                  <button class="dropbtn">Calendar Mgmt. 
                         <i class="fa fa-caret-down"></i>
                   </button>
-                  <div class="dropdown-content">
+                  <div class="menu-dropdown-content">
                         <a href="#">Calendar</a>
                         <a href="#">Manage</a>                        
                         <a href="#">Request</a>
+                        <a href="#">Calendar</a>
+                        <a href="#">Client Services On-Call</a>
+                        <a href="#">Flex Time</a>
+                        <a href="#">Peak Processing and Service Dates</a>
                   </div>
             </div>   
-            <div class="dropdown">
+            <div class="menu-dropdown">
                   <button class="dropbtn">Work Order Mgmt. 
                         <i class="fa fa-caret-down"></i>
                   </button>
-                  <div class="dropdown-content">
+                  <div class="menu-dropdown-content">
                         <a href="#">Manage</a>
                         <a href="#">Configurations</a>
                   </div>

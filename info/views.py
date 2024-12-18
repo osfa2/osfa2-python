@@ -4,7 +4,7 @@ from django.http import FileResponse, HttpResponse
 from datetime import datetime
 from urllib.parse import urlparse, parse_qs
 
-from .models import Employee, Department, Group
+from .models import Employee, Department, Group, Link
 from .osfa.OsfaFileBrowser import OsfaFileBrowser
 
 def index(request):
@@ -78,3 +78,36 @@ def browser(request):
     }
     
     return render(request, 'info/browser.html', context=context)
+
+    
+def approved_software(request):
+    links = Link.objects.filter(linktype=1).order_by('displaytext')
+    
+    context = {
+        'links': links
+    }
+    return render(request, 'info/approved_software.html', context=context)
+
+
+def approved_usb(request):
+    employees = Employee.objects.filter(approved_usb=1).order_by('nickname')
+    
+    context = {
+        'employees': employees
+    }
+    return render(request, 'info/approved_usb.html', context=context)
+
+def routing_slip(request):
+    employees = Employee.objects.filter(status=1).filter(routingslip=1).order_by('group_id', 'lastname')
+    group_ids = employees.values('group_id').distinct()
+    groups = Group.objects.filter(id__in=group_ids).order_by('name')
+    
+    context = {
+        'employees': employees,
+        'groups': groups,
+    }
+    return render(request, 'info/routing_slip.html', context=context)
+
+def routing_slip_preview(request):
+    context = {}
+    return render(request, 'info/routing_slip_preview.html', context=context)
